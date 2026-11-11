@@ -21,7 +21,6 @@ interface SidebarProps {
   onLoadSession: (id: number) => void;
   onDeleteSession: (id: number) => void;
   onSwitchUser: () => void;
-  onSignOut: () => void;
 }
 
 const svg = {
@@ -159,7 +158,6 @@ export function Sidebar({
   onLoadSession,
   onDeleteSession,
   onSwitchUser,
-  onSignOut,
 }: SidebarProps) {
   const [collapsed, setCollapsed] = useState(false);
   const [showMore, setShowMore] = useState(false);
@@ -416,14 +414,7 @@ export function Sidebar({
           </div>
           <div style={{ display: "flex", gap: 8 }}>
             <button onClick={onSwitchUser} title="Change username" style={footerBtn}>
-              Switch
-            </button>
-            <button
-              onClick={onSignOut}
-              title="Sign out and re-enter the passcode"
-              style={{ ...footerBtn, color: "#b0453a", borderColor: "#f0dcd8" }}
-            >
-              Sign out
+              Switch user
             </button>
           </div>
         </div>

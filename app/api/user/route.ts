@@ -4,7 +4,7 @@ import { GUEST_COOKIE, USER_COOKIE, sanitizeUsername } from "@/lib/auth/user";
 export const runtime = "nodejs";
 
 const THIRTY_DAYS = 60 * 60 * 24 * 30;
-// Readable by the client (a handle is not a secret); the real gate is lex_auth.
+// Readable by the client (a handle is not a secret).
 const opts = { httpOnly: false, sameSite: "lax" as const, path: "/", maxAge: THIRTY_DAYS };
 
 // Who am I? Drives the in-app identity gate and the sidebar footer.

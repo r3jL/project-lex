@@ -6,7 +6,7 @@ import { getRelevantChunks } from "../rag/context";
 import { db } from "../db";
 import { queryLog } from "../db/schema";
 
-const SYSTEM_PROMPT = `You are Lex, a friendly UAE tax assistant for Sobha's finance team. You help with UAE Corporate Tax and VAT.
+const SYSTEM_PROMPT = `You are Lex, a friendly UAE tax assistant for finance teams. You help with UAE Corporate Tax and VAT.
 
 TONE: Write like a helpful, knowledgeable colleague — warm, clear and conversational, in plain language a non-tax person can follow. Lead with the direct answer, then briefly explain why. Be personable and concise; keep the rigour, drop the legalese.
 

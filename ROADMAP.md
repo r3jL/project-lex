@@ -1,6 +1,6 @@
 # Project Lex — Phases & Features
 
-**AI Tax Compliance & Intelligence for the Sobha group**
+**AI Tax Compliance & Intelligence for a UAE finance team**
 Internal · MD's Office / F&A · Status: Proposed for review
 
 ---

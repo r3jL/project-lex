@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { SERIF } from "../_lib/lex-data";
 
-// Shown once, right after the passcode, so the user can pick a handle (to keep
-// session history + use the Review Queue) or continue as a guest. Not auth — the
-// passcode is the gate; this is just identity for history and routing.
+// Shown once on first visit so the user can pick a handle (to keep session
+// history + use the Review Queue) or continue as a guest. Not auth — just
+// identity for history and routing.
 export function UsernameGate({ onChosen }: { onChosen: (username: string | null) => void }) {
   const [name, setName] = useState("");
   const [error, setError] = useState("");

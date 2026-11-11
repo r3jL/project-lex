@@ -1,10 +1,12 @@
 # Project Lex — UAE Tax Bot
 
-An AI assistant that answers UAE **VAT & Corporate Tax** questions for Sobha —
-grounded in official FTA law, **every answer cited**, decision-support only
-(a human reviews; the bot never files anything).
+An AI assistant that answers UAE **VAT & Corporate Tax** questions for finance
+teams — grounded in official FTA law, **every answer cited**, decision-support
+only (a human reviews; the bot never files anything).
 
-> Internal · Finance & Accounts / MD's Office · UAE only
+> Built during an internship as an internal tool for a UAE real-estate
+> developer's finance team. This public copy is a portfolio demo: company names
+> and sample data are fictional, and the internal access gate has been removed.
 
 ## What it does (Phase 1)
 - **Cited Q&A** on UAE VAT + Corporate Tax (answers trace to the actual Decree-Law / Decision / Guide)
@@ -18,8 +20,8 @@ Read [ROADMAP.md](ROADMAP.md) for phases/features and [ARCHITECTURE.md](ARCHITEC
 ## Get running
 
 ```bash
-git clone https://github.com/Jatin0129/tax-bot.git
-cd tax-bot
+git clone https://github.com/<you>/lex-tax.git
+cd lex-tax
 npm install
 cp .env.example .env.local        # then pick your AI providers — see below
 ```

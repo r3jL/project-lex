@@ -1,7 +1,7 @@
 import type { NextRequest } from "next/server";
 
-// Lightweight identity. This is NOT authentication — the whole app already sits
-// behind the passcode gate (proxy.ts). A username is just a claimable handle so
+// Lightweight identity. This is NOT authentication — the app is open (portfolio
+// demo). A username is just a claimable handle so
 // a person's sessions, review-queue answers, and notifications can be tied to
 // them across logins. Guests use the app with no handle and get no history.
 //

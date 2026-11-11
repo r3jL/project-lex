@@ -421,16 +421,6 @@ export default function Workspace() {
     setChosen(false); // re-show the identity gate
   }
 
-  // End the session: clear the passcode cookie and go back to the PIN screen.
-  async function signOut() {
-    try {
-      await fetch("/api/auth", { method: "DELETE" });
-    } catch {
-      /* ignore */
-    }
-    window.location.href = "/login";
-  }
-
   const empty = messages.length === 0 && !loading;
 
   const composerEl = (
@@ -466,7 +456,6 @@ export default function Workspace() {
         onLoadSession={loadSession}
         onDeleteSession={deleteSession}
         onSwitchUser={switchUser}
-        onSignOut={signOut}
       />
 
       <div

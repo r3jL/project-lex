@@ -17,7 +17,7 @@ How the system is built and how every part functions. Stack is **Vercel-native**
 | **Database + vectors** | **Neon Postgres + pgvector** (Vercel Marketplace) | *One* store for both relational compliance data **and** vector search |
 | **ORM** | Drizzle | Type-safe schema + migrations |
 | **File storage** | Vercel Blob (private) | Holds uploaded invoices, generated PDFs/Excel |
-| **Auth** | Passcode gate today (cookie + server `AUTH_TOKEN`, `proxy.ts`); Clerk/SSO planned | Internal-staff access control |
+| **Auth** | Open in this portfolio demo (the internal build used a passcode gate); Clerk/SSO planned | Internal-staff access control |
 | **Background jobs** | Vercel Cron + Functions | Reminders, nightly source crawls |
 | **Durable multi-step** | Vercel Workflow (WDK) | Change-impact re-runs that must survive crashes/retries |
 | **Email reminders** | Resend | 30/15/7/1-day deadline alerts (SMS/WhatsApp later via Twilio) |
@@ -216,4 +216,4 @@ tax-bot/
 ## Open technical decisions
 1. **Neon Postgres+pgvector** (recommended — one store) vs. a dedicated vector DB (Upstash/Pinecone). Recommend pgvector to keep ops simple since we need relational compliance data anyway.
 2. **Crawl vs. manual upload** of source law for Phase 0 — start with a small curated set (CT + VAT core pages), automate crawling later.
-3. **Clerk vs. existing Sobha SSO** — confirm whether to integrate with internal identity.
+3. **Clerk vs. an existing corporate SSO** — confirm whether to integrate with internal identity.

@@ -2,7 +2,7 @@ import type { SeedChunk } from "./types";
 
 const VAT_URL = "https://tax.gov.ae/en/taxes/vat.aspx";
 
-// Real estate & contracts — the Sobha-relevant treatment matrix plus the
+// Real estate & contracts — the developer-relevant treatment matrix plus the
 // contract/VAT-clause points that recur in property deals. IDs 500–599.
 export const REAL_ESTATE_SEED: SeedChunk[] = [
   {

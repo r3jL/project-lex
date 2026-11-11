@@ -120,8 +120,8 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// Delete escalations from the queue. Any signed-in user may do this — the whole
-// app sits behind the passcode gate (proxy.ts). Scoped to status = 'escalate'
+// Delete escalations from the queue. Any user may do this (open demo, no role
+// gate). Scoped to status = 'escalate'
 // so it can ONLY remove queue items, never answered Q&A history.
 //   DELETE /api/review-queue?id=123  → remove one escalation
 //   DELETE /api/review-queue?all=1   → clear the entire queue
