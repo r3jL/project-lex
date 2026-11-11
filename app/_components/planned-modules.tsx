@@ -6,9 +6,10 @@ import { ReviewQueueModule } from "./review-queue-module";
 interface PlannedModulesProps {
   module: Exclude<ModuleKey, "ask">;
   hasUsername: boolean;
+  onChooseUsername: () => void;
 }
 
-export function PlannedModules({ module, hasUsername }: PlannedModulesProps) {
+export function PlannedModules({ module, hasUsername, onChooseUsername }: PlannedModulesProps) {
   const meta = MODULES[module];
 
   return (
@@ -39,7 +40,7 @@ export function PlannedModules({ module, hasUsername }: PlannedModulesProps) {
           hasUsername ? (
             <ReviewQueueModule hasUsername={hasUsername} />
           ) : (
-            <Restricted />
+            <Restricted onChooseUsername={onChooseUsername} />
           )
         ) : (
           <UnderConstruction />
@@ -51,7 +52,7 @@ export function PlannedModules({ module, hasUsername }: PlannedModulesProps) {
 
 // Locked screen shown to guests. The Review Queue routes human answers back to
 // a specific person, so it needs a username to work.
-function Restricted() {
+function Restricted({ onChooseUsername }: { onChooseUsername: () => void }) {
   return (
     <div
       style={{
@@ -72,8 +73,24 @@ function Restricted() {
         </div>
         <div style={{ fontSize: 13.5, color: "#6b6b66", marginTop: 8, lineHeight: 1.6 }}>
           The Review Queue sends answers back to whoever asked, so it needs a
-          username. Use <strong>Switch</strong> at the top of the sidebar to pick one.
+          username. Pick one to try it — no sign-up needed.
         </div>
+        <button
+          onClick={onChooseUsername}
+          style={{
+            marginTop: 16,
+            border: "1px solid #1a1a1a",
+            borderRadius: 99,
+            background: "#1a1a1a",
+            color: "#fff",
+            fontSize: 13.5,
+            fontWeight: 600,
+            padding: "9px 20px",
+            cursor: "pointer",
+          }}
+        >
+          Choose a username
+        </button>
       </div>
     </div>
   );

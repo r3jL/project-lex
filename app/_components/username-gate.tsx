@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { SERIF } from "../_lib/lex-data";
 
-// Shown once on first visit so the user can pick a handle (to keep session
-// history + use the Review Queue) or continue as a guest. Not auth — just
+// Opened on request (sidebar "Set username" / the Review Queue) so the user can
+// pick a handle (to keep session history + use the Review Queue) or stay a guest. Not auth — just
 // identity for history and routing.
 export function UsernameGate({ onChosen }: { onChosen: (username: string | null) => void }) {
   const [name, setName] = useState("");

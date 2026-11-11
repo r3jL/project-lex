@@ -67,23 +67,23 @@ export default function Workspace() {
 
   // Identity + saved history.
   const [username, setUsername] = useState<string | null>(null);
-  const [chosen, setChosen] = useState<boolean | null>(null); // null = still checking
+  // The username picker opens only on request (sidebar / Review Queue), never
+  // on first visit — visitors land straight in the chat as guests.
+  const [pickerOpen, setPickerOpen] = useState(false);
   const [sessions, setSessions] = useState<SessionSummary[]>([]);
   const [activeSessionId, setActiveSessionId] = useState<number | null>(null);
 
   const threadRef = useRef<HTMLDivElement>(null);
 
-  // Bootstrap identity: has the user picked a username or guest yet?
+  // Bootstrap identity: restore a previously chosen username, if any.
   useEffect(() => {
     let active = true;
     fetch("/api/user")
       .then((r) => r.json())
       .then((d) => {
-        if (!active) return;
-        setUsername(d.username ?? null);
-        setChosen(!!d.chosen);
+        if (active) setUsername(d.username ?? null);
       })
-      .catch(() => active && setChosen(true)); // fail open — never block the app
+      .catch(() => {}); // stay a guest — never block the app
     return () => {
       active = false;
     };
@@ -418,7 +418,7 @@ export default function Workspace() {
     setSessions([]);
     setActiveSessionId(null);
     setMessages([]);
-    setChosen(false); // re-show the identity gate
+    setPickerOpen(true);
   }
 
   const empty = messages.length === 0 && !loading;
@@ -590,16 +590,16 @@ export default function Workspace() {
               </>
             )
           ) : (
-            <PlannedModules module={module} hasUsername={!!username} />
+            <PlannedModules module={module} hasUsername={!!username} onChooseUsername={switchUser} />
           )}
         </div>
       </div>
 
-      {chosen === false && (
+      {pickerOpen && (
         <UsernameGate
           onChosen={(u) => {
             setUsername(u);
-            setChosen(true);
+            setPickerOpen(false);
           }}
         />
       )}

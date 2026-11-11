@@ -396,7 +396,7 @@ export function Sidebar({
             </div>
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: ".08em", textTransform: "uppercase", color: "#b4b4ae" }}>
-                Signed in as
+                {username ? "Signed in as" : "Browsing as"}
               </div>
               <div
                 style={{
@@ -408,13 +408,17 @@ export function Sidebar({
                   textOverflow: "ellipsis",
                 }}
               >
-                {username ? `@${username}` : "Unknown"}
+                {username ? `@${username}` : "Guest"}
               </div>
             </div>
           </div>
           <div style={{ display: "flex", gap: 8 }}>
-            <button onClick={onSwitchUser} title="Change username" style={footerBtn}>
-              Switch user
+            <button
+              onClick={onSwitchUser}
+              title={username ? "Change username" : "Pick a username to keep history and use the Review Queue"}
+              style={footerBtn}
+            >
+              {username ? "Switch user" : "Set username"}
             </button>
           </div>
         </div>
