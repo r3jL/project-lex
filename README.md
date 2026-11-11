@@ -20,8 +20,8 @@ Read [ROADMAP.md](ROADMAP.md) for phases/features and [ARCHITECTURE.md](ARCHITEC
 ## Get running
 
 ```bash
-git clone https://github.com/<you>/lex-tax.git
-cd lex-tax
+git clone https://github.com/r3jL/project-lex.git
+cd project-lex
 npm install
 cp .env.example .env.local        # then pick your AI providers — see below
 ```

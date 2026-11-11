@@ -445,10 +445,11 @@ async function syncDocument(
 }
 
 async function main() {
-  // Embeddings always need the key. The database is optional: with no
-  // DATABASE_URL we build a local index file instead (the "keep it simple" path).
-  if (!process.env.AI_GATEWAY_API_KEY) {
-    console.error("Ingestion needs AI_GATEWAY_API_KEY in .env.local.");
+  // Embeddings always need Gateway auth: an API key, or the OIDC token that
+  // `vercel env pull` writes. The database is optional: with no DATABASE_URL we
+  // build a local index file instead (the "keep it simple" path).
+  if (!process.env.AI_GATEWAY_API_KEY && !process.env.VERCEL_OIDC_TOKEN) {
+    console.error("Ingestion needs AI_GATEWAY_API_KEY (or VERCEL_OIDC_TOKEN from `vercel env pull`) in .env.local.");
     process.exit(1);
   }
   const useDb = !!process.env.DATABASE_URL;
